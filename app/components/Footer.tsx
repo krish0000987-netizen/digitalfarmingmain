@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] gap-10 lg:gap-8 border-b border-white/10 pb-12">
           <div>
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-11 h-11 rounded-xl bg-[#1a5c2a] flex items-center justify-center font-bold">DA</div>
+              <img src="/digitalagro/logo.png" alt="Digital Agro Logo" className="w-11 h-11 object-contain rounded-full bg-white/10 p-0.5" />
               <div>
                 <div className="font-bold leading-none">Digital Agro</div>
                 <div className="text-xs tracking-[0.18em] uppercase text-white/60">Farming Services</div>

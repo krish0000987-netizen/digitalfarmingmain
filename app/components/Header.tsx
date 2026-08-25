@@ -29,7 +29,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-[68px] lg:h-[84px]">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-lg ${scrolled ? "bg-[#14532d]" : "bg-[#14532d] lg:bg-white lg:text-[#14532d]"} transition-colors`}>DA</div>
+            <img src="/digitalagro/logo.png" alt="Digital Agro Logo" className="w-10 h-10 object-contain rounded-full" />
             <div className="leading-tight">
               <div className={`font-bold text-[15px] tracking-tight leading-none ${scrolled ? "text-[#0e2e1f]" : "text-[#0e2e1f] lg:text-white"}`}>Digital Agro</div>
               <div className={`text-[11px] tracking-[0.18em] font-semibold uppercase ${scrolled ? "text-[#5a6b5a]" : "text-[#5a6b5a] lg:text-white/80"}`}>Farming Services</div>
