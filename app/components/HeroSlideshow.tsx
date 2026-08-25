@@ -53,8 +53,8 @@ export default function HeroSlideshow() {
   }, []);
   const s = slides[idx];
   return (
-    <section className="relative h-[78dvh] h-[78vh] min-h-[480px] sm:min-h-[560px] max-h-[640px] sm:max-h-[880px] overflow-hidden bg-[#0e2e1f]">
-      {/* Images - only active slide eager, others lazy */}
+    <section className="relative min-h-[600px] sm:h-[78vh] sm:min-h-[560px] sm:max-h-[880px] overflow-hidden bg-[#0e2e1f]">
+      {/* Images - eager loaded to prevent blank slides on mobile transitions */}
       {slides.map((slide, i) => (
         <div key={i} className={`absolute inset-0 transition-all duration-[1200ms] ease-in-out ${i === idx ? "opacity-100 scale-100" : "opacity-0 scale-[1.04] pointer-events-none"}`}>
           <picture>
@@ -63,7 +63,7 @@ export default function HeroSlideshow() {
               src={slide.image}
               alt=""
               className="w-full h-full object-cover object-center"
-              loading={i === 0 ? "eager" : "lazy"}
+              loading="eager"
               decoding="async"
               fetchPriority={i === idx ? "high" : "low"}
             />
@@ -74,7 +74,7 @@ export default function HeroSlideshow() {
       ))}
 
       {/* Content - mobile optimized */}
-      <div className="relative z-10 h-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center pt-20 sm:pt-16 pb-20 sm:pb-0">
+      <div className="relative z-10 h-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center pt-24 sm:pt-16 pb-16 sm:pb-0">
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/15 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 mb-4 sm:mb-6">
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#7bc47f] rounded-full animate-pulse" />
@@ -98,20 +98,20 @@ export default function HeroSlideshow() {
             </Link>
           </div>
 
-          <div className="mt-5 sm:mt-8">
+          <div className="mt-5 sm:mt-8 hidden sm:block">
             <a href="tel:+919593069126" className="inline-flex items-center gap-2 sm:gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 sm:px-5 py-2.5 sm:py-3 text-white hover:bg-white hover:text-[#0e2e1f] transition-colors w-full sm:w-auto justify-center sm:justify-start">
               <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#25D366] flex items-center justify-center text-white text-xs sm:text-sm shrink-0">☎</span>
               <span className="text-xs sm:text-sm font-semibold truncate">Call / WhatsApp: +91 95930 69126</span>
             </a>
           </div>
-        </div>
-      </div>
 
-      {/* Dots - above mobile bottom bar */}
-      <div className="absolute bottom-[88px] sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 sm:gap-2.5">
-        {slides.map((_, i) => (
-          <button key={i} onClick={() => setIdx(i)} className={`transition-all duration-500 rounded-full min-h-0 ${i === idx ? "w-6 sm:w-8 h-1.5 sm:h-2 bg-white" : "w-1.5 sm:w-2 h-1.5 sm:h-2 bg-white/60 hover:bg-white/90"}`} aria-label={`Go to slide ${i + 1}`} />
-        ))}
+          {/* Dots - in-flow pagination so they can NEVER overlap with text/buttons */}
+          <div className="flex items-center gap-2 sm:gap-2.5 mt-6 sm:mt-8 z-20">
+            {slides.map((_, i) => (
+              <button key={i} onClick={() => setIdx(i)} className={`transition-all duration-500 rounded-full min-h-0 h-1.5 sm:h-2 ${i === idx ? "w-6 sm:w-8 bg-white" : "w-1.5 sm:w-2 bg-white/40 hover:bg-white/80"}`} aria-label={`Go to slide ${i + 1}`} />
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Scroll indicator - desktop only */}

@@ -2,7 +2,25 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const products = [
+interface Product {
+  id: string;
+  name: string;
+  subtitle: string;
+  variant: string;
+  price: number;
+  mrp: string;
+  desc: string;
+  benefits: string[];
+  img: string;
+  tag: string;
+  color: string;
+  details?: string;
+  bullets?: string[];
+  composition?: string;
+  crops?: string;
+}
+
+const products: Product[] = [
   {
     id: "01",
     name: "ACTIVE-80",
@@ -85,7 +103,7 @@ const moreProducts = [
 ];
 
 export default function Products() {
-  const [selected, setSelected] = useState<(typeof products)[0] | null>(null);
+  const [selected, setSelected] = useState<Product | null>(null);
   return (
     <div className="bg-[#fdfcf8]">
       <section className="relative h-[400px] sm:h-[480px] lg:h-[560px] flex items-center overflow-hidden">
@@ -264,25 +282,25 @@ export default function Products() {
             </div>
             <div className="p-7">
               <p className="text-sm text-[#5a6b5a] leading-relaxed">{selected.desc}</p>
-              {"details" in selected && selected.details && (
+              {selected.details && (
                 <div className="mt-5 bg-[#f8f5ee] rounded-2xl p-4 text-sm text-[#0e2e1f] leading-relaxed border border-stone-100">
                   <div className="font-bold text-xs tracking-widest uppercase text-[#1a5c2a] mb-2">Product Details — 100ml • ₹180 — Seaweed Extract</div>
-                  <p className="text-xs text-[#5a6b5a] leading-relaxed">{(selected as any).details}</p>
+                  <p className="text-xs text-[#5a6b5a] leading-relaxed">{selected.details}</p>
                 </div>
               )}
-              {"bullets" in selected && (selected as any).bullets && (
+              {selected.bullets && (
                 <ul className="mt-4 space-y-2">
-                  {(selected as any).bullets.map((b: string) => (
+                  {selected.bullets.map((b: string) => (
                     <li key={b} className="flex gap-2 text-xs text-[#0e2e1f]"><span className="w-5 h-5 rounded-full bg-[#e8f5e9] flex items-center justify-center text-[#1a5c2a] text-[10px] shrink-0">✓</span><span>{b}</span></li>
                   ))}
                 </ul>
               )}
-              {"composition" in selected && (selected as any).composition && (
+              {selected.composition && (
                 <div className="mt-4 bg-white border border-stone-100 rounded-2xl p-4">
                   <div className="text-xs font-bold tracking-widest uppercase text-[#5a6b5a]">Composition</div>
-                  <p className="text-xs text-[#5a6b5a] leading-relaxed mt-1">{(selected as any).composition}</p>
+                  <p className="text-xs text-[#5a6b5a] leading-relaxed mt-1">{selected.composition}</p>
                   <div className="text-xs font-bold tracking-widest uppercase text-[#5a6b5a] mt-3">Used For</div>
-                  <p className="text-xs text-[#1a5c2a] leading-relaxed mt-1 font-medium">{(selected as any).crops}</p>
+                  <p className="text-xs text-[#1a5c2a] leading-relaxed mt-1 font-medium">{selected.crops}</p>
                 </div>
               )}
               <div className="flex flex-wrap gap-2 mt-4">

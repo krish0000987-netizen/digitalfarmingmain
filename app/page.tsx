@@ -69,7 +69,7 @@ export default function Home() {
             <p className="max-w-md text-[#6b7c6b] text-sm leading-relaxed">From farm development to plantation management — practical solutions for every stage of your agricultural journey.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
             {[
               { title: "Agro Farming", desc: "Complete farming solutions from planning to harvest.", img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80", icon: "🌾" },
               { title: "Plantation Services", desc: "Creating thriving green spaces that last generations.", img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80", icon: "🌳" },
@@ -80,16 +80,20 @@ export default function Home() {
               { title: "Farm Maintenance", desc: "Ongoing care to keep your farm at its best.", img: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&q=80", icon: "🔧" },
               { title: "Custom Solutions", desc: "Bespoke agricultural projects built around you.", img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80", icon: "✨" },
             ].map((c) => (
-              <div key={c.title} className="group bg-white rounded-[24px] overflow-hidden border border-stone-100 card-hover">
-                <div className="h-44 overflow-hidden relative">
-                  <img src={c.img} alt={c.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <div className="absolute top-4 left-4 w-9 h-9 bg-white rounded-full flex items-center justify-center text-sm shadow-md">{c.icon}</div>
+              <div key={c.title} className="group bg-white rounded-[24px] overflow-hidden border border-stone-100 card-hover flex flex-col justify-between">
+                <div>
+                  <div className="h-28 sm:h-44 overflow-hidden relative">
+                    <img src={c.img} alt={c.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                    <div className="absolute top-3 left-3 sm:top-4 sm:left-4 w-7 h-7 sm:w-9 sm:h-9 bg-white rounded-full flex items-center justify-center text-xs sm:text-sm shadow-md">{c.icon}</div>
+                  </div>
+                  <div className="p-3 sm:p-6">
+                    <h3 className="font-semibold text-xs sm:text-base text-[#0e2e1f] truncate">{c.title}</h3>
+                    <p className="text-[10px] sm:text-sm text-[#6b7c6b] leading-relaxed mt-1 sm:mt-2 min-h-[36px] sm:min-h-[40px] line-clamp-3 sm:line-clamp-none">{c.desc}</p>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="font-semibold text-[#0e2e1f]">{c.title}</h3>
-                  <p className="text-sm text-[#6b7c6b] leading-relaxed mt-2 min-h-[40px]">{c.desc}</p>
-                  <Link href="/services" className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1a5c2a] mt-4 group-hover:gap-2.5 transition-all">Learn More →</Link>
+                <div className="p-3 pt-0 sm:p-6 sm:pt-0">
+                  <Link href="/services" className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#1a5c2a] group-hover:gap-2.5 transition-all">Learn More →</Link>
                 </div>
               </div>
             ))}
@@ -113,7 +117,7 @@ export default function Home() {
             </div>
             <Link href="/products" className="inline-flex items-center gap-2 border border-stone-200 bg-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-[#0e2e1f] hover:text-white">View All Products →</Link>
           </div>
-          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-5">
             {[
               { name: "ACTIVE-80", var: "100 ml", price: "₹140", img: "/products/active-80-100ml-140.jpg", tag: "100ml" },
               { name: "ACTIVMAX", var: "100 ml", price: "₹180", img: "/products/activmax-100ml-180.jpg", tag: "100ml" },
@@ -121,17 +125,19 @@ export default function Home() {
               { name: "ACTIVMAX", var: "500 ml", price: "₹800", img: "/products/activmax-500ml-800.jpg", tag: "Best Seller" },
               { name: "ACTIVE-80", var: "5 Ltr", price: "₹4,500", img: "/products/active-80-5ltr-4500.jpg", tag: "5 LTR" },
             ].map((p) => (
-              <Link key={p.name + p.var} href="/products" className="group bg-[#fdfcf8] rounded-[24px] border border-stone-100 overflow-hidden hover:shadow-lg transition-all">
-                <div className="bg-white p-6 flex flex-col items-center h-56">
-                  <span className="self-start bg-[#0e2e1f] text-white text-[10px] font-bold tracking-widest px-2 py-1 rounded-full">{p.tag}</span>
-                  <img src={p.img} alt={p.name} className="w-28 h-32 object-contain mt-2 group-hover:scale-105 transition-transform" />
+              <Link key={p.name + p.var} href="/products" className="group bg-[#fdfcf8] rounded-[24px] border border-stone-100 overflow-hidden hover:shadow-lg transition-all flex flex-col justify-between">
+                <div className="bg-white p-4 sm:p-6 flex flex-col items-center h-44 sm:h-56 justify-between">
+                  <span className="self-start bg-[#0e2e1f] text-white text-[9px] sm:text-[10px] font-bold tracking-widest px-2 py-1 rounded-full">{p.tag}</span>
+                  <img src={p.img} alt={p.name} className="w-20 h-24 sm:w-28 sm:h-32 object-contain mt-1 group-hover:scale-105 transition-transform" />
                 </div>
-                <div className="p-4 bg-white border-t border-stone-100">
-                  <div className="font-bold text-sm text-[#0e2e1f] leading-none">{p.name}</div>
-                  <div className="text-xs text-[#6b7c6b]">{p.var}</div>
-                  <div className="flex items-center justify-between mt-3">
-                    <span className="bg-[#e8f5e9] text-[#0e2e1f] px-3 py-1 rounded-full font-bold text-sm">{p.price}</span>
-                    <span className="text-xs font-bold text-[#1a5c2a] group-hover:gap-1 flex items-center gap-1">Order →</span>
+                <div className="p-3 sm:p-4 bg-white border-t border-stone-100 flex-1 flex flex-col justify-between">
+                  <div>
+                    <div className="font-bold text-xs sm:text-sm text-[#0e2e1f] leading-tight truncate">{p.name}</div>
+                    <div className="text-[10px] sm:text-xs text-[#6b7c6b] mt-0.5">{p.var}</div>
+                  </div>
+                  <div className="flex items-center justify-between mt-2.5 sm:mt-3">
+                    <span className="bg-[#e8f5e9] text-[#0e2e1f] px-2 sm:px-3 py-0.5 sm:py-1 rounded-full font-bold text-xs sm:text-sm">{p.price}</span>
+                    <span className="text-[10px] sm:text-xs font-bold text-[#1a5c2a] group-hover:gap-1 flex items-center gap-0.5">Order →</span>
                   </div>
                 </div>
               </Link>
@@ -189,7 +195,7 @@ export default function Home() {
           <h2 className="font-display text-[32px] lg:text-[44px] font-bold leading-none text-[#0e2e1f]">Agriculture <span className="italic font-normal text-[#1a5c2a]">in Focus</span></h2>
           <p className="text-[#6b7c6b] text-sm mt-4">A glimpse into the fields, plantations and landscapes we help cultivate.</p>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[200px]">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 auto-rows-[160px] sm:auto-rows-[200px]">
           <div className="rounded-[24px] overflow-hidden row-span-2">
             <img src="/digitalagro/farmer-1.jpg" alt="Happy Farmer — Ridge Gourd" className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" />
           </div>
