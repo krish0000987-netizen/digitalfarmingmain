@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${geist.variable} ${playfair.variable} scroll-smooth`}>
       <body className="min-h-screen bg-[#fdfcf8] text-[#0e2a1f] antialiased overflow-x-hidden">
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main className="min-h-screen pt-[68px] lg:pt-0">{children}</main>
         <Footer />
         <div className="h-[84px] md:hidden" aria-hidden />
         <FloatingActions />

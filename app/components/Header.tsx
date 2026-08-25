@@ -24,7 +24,7 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? "bg-white/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(14,46,31,0.08)] border-b border-stone-100" : "bg-white/0 lg:bg-gradient-to-b lg:from-black/30 lg:to-transparent border-transparent"} `}>
+    <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? "bg-white/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(14,46,31,0.08)] border-b border-stone-100" : "bg-white border-b border-stone-100 lg:bg-white/0 lg:bg-gradient-to-b lg:from-black/30 lg:to-transparent lg:border-transparent"} `}>
       <div className="max-w-[1440px] mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-[68px] lg:h-[84px]">
           {/* Logo */}
@@ -58,7 +58,7 @@ export default function Header() {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2C6.59 2 2.15 6.42 2.15 10.85c0 1.56.41 3.08 1.19 4.42L2 22l6.9-1.81a9.82 9.82 0 0 0 4.7 1.2h.01c5.45 0 9.89-4.42 9.89-9.85 0-2.63-1.03-5.1-2.9-6.97l.45.32Zm-7.01 15.24h-.01a8.17 8.17 0 0 1-4.17-1.14l-.3-.18-4.1 1.07 1.1-3.99-.2-.4a8.2 8.2 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.26.86 5.82 2.42a8.18 8.18 0 0 1 2.42 5.83c0 4.54-3.7 8.23-8.25 8.23Zm6.88-6.17c-.37-.19-2.2-1.09-2.54-1.21-.34-.12-.59-.19-.84.19-.25.37-.97 1.21-1.19 1.46-.22.25-.45.28-.82.09-.37-.19-1.57-.58-2.99-1.85-1.11-.99-1.86-2.21-2.08-2.58-.22-.37-.02-.57.17-.76.17-.17.37-.45.56-.67.19-.22.25-.37.37-.62.12-.25.06-.47-.03-.66-.09-.19-.84-2.02-1.15-2.77-.3-.72-.61-.62-.84-.63l-.72-.01c-.25 0-.66.09-1 .47-.34.37-1.31 1.28-1.31 3.12s1.34 3.62 1.53 3.87c.19.25 2.64 4.03 6.4 5.65.89.38 1.59.61 2.13.78.9.28 1.71.24 2.36.15.72-.11 2.2-.9 2.51-1.77.31-.87.31-1.62.22-1.77-.09-.15-.34-.24-.71-.42Z"/></svg>
             </a>
             {/* Mobile hamburger */}
-            <button onClick={() => setOpen(!open)} className={`xl:hidden w-10 h-10 rounded-full flex flex-col items-center justify-center gap-1.5 ${scrolled ? "bg-[#0e2e1f] text-white" : "bg-white text-[#0e2e1f] lg:bg-white/15 lg:text-white lg:backdrop-blur-md"}`}>
+            <button onClick={() => setOpen(!open)} className={`xl:hidden w-10 h-10 rounded-full flex flex-col items-center justify-center gap-1.5 ${scrolled ? "bg-[#0e2e1f] text-white" : "bg-[#0e2e1f] text-white lg:bg-white/15 lg:text-white lg:backdrop-blur-md"}`}>
               <span className={`w-4 h-0.5 bg-current transition-all ${open ? "rotate-45 translate-y-1" : ""}`} />
               <span className={`w-4 h-0.5 bg-current transition-all ${open ? "-rotate-45 -translate-y-1" : ""}`} />
             </button>
